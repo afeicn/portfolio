@@ -1,0 +1,72 @@
+site:
+  name: 沈飞 | 数字化与AI转型专家
+  site: 'https://shenfei-portfolio.vercel.app'
+  base: '/'
+  trailingSlash: false
+
+  googleSiteVerificationId: null
+
+# Default SEO metadata
+metadata:
+  title:
+    default: 沈飞 | 贝壳效率工程中心负责人 & AI专家
+    template: '%s — 沈飞个人主页'
+  description: "沈飞的个人主页。贝壳找房效率工程中心负责人，18年企业数字化转型经验，AI布道师项目发起人，分享AI落地、组织变革与产品管理心得。"
+  robots:
+    index: true
+    follow: true
+  openGraph:
+    site_name: 沈飞个人主页
+    images:
+      - url: '~/assets/images/default.png'
+        width: 1200
+        height: 628
+    type: website
+  twitter:
+    handle: '@shenfei'
+    site: '@shenfei'
+    cardType: summary_large_image
+
+i18n:
+  language: zh
+  textDirection: ltr
+
+apps:
+  blog:
+    isEnabled: true
+    postsPerPage: 6
+
+    post:
+      isEnabled: true
+      permalink: '/%slug%'
+      robots:
+        index: true
+
+    list:
+      isEnabled: true
+      pathname: 'blog'
+      robots:
+        index: true
+
+    category:
+      isEnabled: true
+      pathname: 'category'
+      robots:
+        index: true
+
+    tag:
+      isEnabled: true
+      pathname: 'tag'
+      robots:
+        index: false
+
+    isRelatedPostsEnabled: true
+    relatedPostsCount: 4
+
+analytics:
+  vendors:
+    googleAnalytics:
+      id: null
+
+ui:
+  theme: 'system'

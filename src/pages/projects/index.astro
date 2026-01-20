@@ -1,0 +1,34 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection('project');
+
+const metadata = {
+  title: '实战案例',
+};
+---
+
+<Layout metadata={metadata}>
+  <HeroText
+    tagline="Projects"
+    title="实战案例"
+    subtitle="探索我构建的 AI Agent 和全栈应用。"
+  />
+
+  <Features2
+    title="我的作品"
+    items={projects.map((project) => ({
+      title: project.data.title,
+      description: project.data.description,
+      icon: 'tabler:rocket',
+      callToAction: project.data.demo ? { text: '查看演示', href: project.data.demo } : (project.data.repository ? { text: '源码', href: project.data.repository } : undefined),
+    }))}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+</Layout>

@@ -1,0 +1,68 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection('project');
+const recentProjects = projects.sort((a, b) => (b.data.publishDate?.valueOf() || 0) - (a.data.publishDate?.valueOf() || 0)).slice(0, 4);
+
+const metadata = {
+  title: '沈飞 | 贝壳效率工程中心负责人 & AI专家',
+  ignoreTitleTemplate: true,
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    actions={[
+      {
+        variant: 'primary',
+        text: '了解我的经历',
+        href: '/about',
+        icon: 'tabler:user',
+      },
+      { text: '查看实战案例', href: '#projects', icon: 'tabler:rocket' },
+    ]}
+    image={{ src: '~/assets/images/hero-image.png', alt: 'Shen Fei Hero Image' }}
+  >
+    <Fragment slot="title">
+      <span class="text-accent dark:text-white highlight">沈飞</span> <br/>
+      <span class="text-2xl md:text-4xl font-medium tracking-tight">贝壳效率工程中心负责人</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      <span class="hidden sm:inline">
+        18年企业数字化与管理咨询经验，<strong>AI 布道师项目</strong>发起人。<br/>
+        致力于推动企业智能化转型、AI 普惠落地与组织变革。
+      </span>
+      <span class="block mb-1 sm:hidden font-bold text-blue-600">企业数字化 & AI 转型专家</span>
+    </Fragment>
+  </Hero>
+
+  <!-- Features Widget *************** -->
+
+  <Features
+    id="projects"
+    tagline="实战与成果"
+    title="AI 落地与数字化实践"
+    subtitle="从战略规划到产品落地，探索 AI 时代的组织进化之路。"
+    items={recentProjects.map((project) => ({
+      title: project.data.title,
+      description: project.data.description,
+      icon: 'tabler:bulb',
+      callToAction: project.data.demo ? { text: '查看演示', href: project.data.demo } : (project.data.repository ? { text: '源码', href: project.data.repository } : { text: '查看详情', href: '/projects' }),
+    }))}
+  />
+
+  <!-- BlogLatestPosts Widget ******* -->
+
+  <BlogLatestPosts
+    title="最新文章"
+    information={`分享关于 AI 落地、组织数字化转型及产品管理的深度思考。`}
+  />
+</Layout>

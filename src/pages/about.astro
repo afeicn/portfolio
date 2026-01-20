@@ -1,0 +1,151 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Content from '~/components/widgets/Content.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Image from '~/components/common/Image.astro';
+
+const metadata = {
+  title: '关于沈飞',
+};
+---
+
+<Layout metadata={metadata}>
+  <HeroText
+    tagline="About Me"
+    title="沈飞"
+    subtitle="贝壳找房效率工程中心负责人 / 高级总监 | 资深企业数字化专家"
+  />
+
+  <Content
+    isReversed
+    title="个人简介"
+    items={[
+      {
+        title: '数字化领军者',
+        description:
+          '18年企业数字化经验，主导全自研人力数字化核心系统、业财一体化及合规全面数字化等关键基础设施建设。',
+      },
+      {
+        title: 'AI 转型先锋',
+        description:
+          '牵头贝壳 AI 布道师项目，搭建 AI 培训体系，推出 AI 工作坊、Vibe Working 工作法等专属方法论，推动 AI 特战队等组织变革。',
+      },
+      {
+        title: '多元化背景',
+        description:
+          '对外经济贸易大学经济学硕士。具备全球顶级咨询公司（毕博）履历，曾于百度、美团等头部互联网企业任产品专家，51社保产品VP。',
+      },
+    ]}
+  >
+    <Fragment slot="image">
+      <div class="relative w-full max-w-md mx-auto">
+        <div class="carousel flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar rounded-lg shadow-lg" style="scrollbar-width: none; -ms-overflow-style: none;">
+          <div class="w-full flex-shrink-0 snap-center">
+             <Image src="~/assets/images/profile-portrait.jpg" alt="沈飞形象照" width={500} height={500} class="w-full h-auto object-cover aspect-square" />
+          </div>
+          <div class="w-full flex-shrink-0 snap-center">
+             <Image src="~/assets/images/profile-speech.jpg" alt="AICQ发布演讲" width={500} height={500} class="w-full h-auto object-cover aspect-square" />
+          </div>
+          <div class="w-full flex-shrink-0 snap-center">
+             <Image src="~/assets/images/profile-association.jpg" alt="协会参会照片" width={500} height={500} class="w-full h-auto object-cover aspect-square" />
+          </div>
+        </div>
+        <div class="flex justify-center mt-2 gap-2">
+          <span class="h-2 w-2 rounded-full bg-gray-300 dark:bg-gray-600"></span>
+          <span class="h-2 w-2 rounded-full bg-gray-300 dark:bg-gray-600"></span>
+          <span class="h-2 w-2 rounded-full bg-gray-300 dark:bg-gray-600"></span>
+        </div>
+        <script>
+          const carousel = document.querySelector('.carousel');
+          if (carousel) {
+            let scrollAmount = 0;
+            const scrollMax = carousel.scrollWidth - carousel.clientWidth;
+            const scrollStep = carousel.clientWidth;
+            
+            setInterval(() => {
+              scrollAmount += scrollStep;
+              if (scrollAmount > scrollMax) {
+                scrollAmount = 0;
+              }
+              carousel.scrollTo({
+                top: 0,
+                left: scrollAmount,
+                behavior: 'smooth'
+              });
+            }, 3000);
+          }
+        </script>
+      </div>
+    </Fragment>
+
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">职业概览</h3>
+      中国人力资源开发研究会智能分会副秘书长、智能分会 AICQ 委员会主任、中关村人才协会数字化人才专委会理事、国际数据与人工智能管理协会理事。
+      <br/><br/>
+      长期深耕企业架构设计、IT 治理体系搭建、数据治理框架优化及 AI 转型战略实施。
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <Steps
+    title="工作经历"
+    items={[
+      {
+        title: '贝壳找房 (2018.10 - 至今)',
+        description: '<strong>效率工程中心负责人 / 高级总监</strong><br/>主导人力、OA、财务、合规等系统规划，推进 3T2C 组织变革。推动 AI 普惠项目，构建智能办公助理“闹海”与专业助手“贝好问”，实现集团总部 80% 渗透率。',
+        icon: 'tabler:home-2',
+      },
+      {
+        title: '51社保 (2016.4 - 2018.8)',
+        description: '<strong>产品 VP</strong><br/>薪税保事业部负责人，孵化薪酬、外包等业务，年服务人数超 10 万，流水突破 100 亿元。',
+        icon: 'tabler:shield-check',
+      },
+      {
+        title: '美团 (2014.10 - 2016.4)',
+        description: '<strong>企业平台研发部产品专家</strong><br/>主导人力系统、OA 流程平台建设，缩短新流程研发周期至 1 周，孵化 O2O 创新产品线。',
+        icon: 'tabler:shopping-bag',
+      },
+      {
+        title: '百度 (2012.3 - 2014.10)',
+        description: '<strong>流程信息管理部高级经理</strong><br/>负责 ERP 架构升级与自研人力系统建设。',
+        icon: 'tabler:search',
+      },
+      {
+        title: '毕博管理咨询 (2007 - 2012)',
+        description: '<strong>高级顾问</strong><br/>参与多个跨国集团 ERP 项目实施。',
+        icon: 'tabler:briefcase',
+      },
+    ]}
+  />
+
+  <Content
+    title="著作与研究"
+    items={[
+      {
+        title: '《当 HR 遇见 AI》（全新修订版）',
+        description: '王崇良 沈飞 谢庚曦 著，人民邮电出版社，2025-11',
+      },
+      {
+        title: '《AI 素养觉醒：数智时代的公民必修课》',
+        description: '沈飞 马欢 等编著，2026-01',
+      },
+      {
+        title: '行业白皮书',
+        description: '参与编写《中国人力资源数智化发展白皮书-2025版》、《AI赋能政府与央国企智能化转型白皮书》等。',
+      },
+    ]}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">学术与社会任职</h3>
+      除了企业实践，我也致力于行业知识的输出与分享。
+      <br/><br/>
+      担任天津大学《人力资源前沿》课程讲师、北京大学《人力资源管理》课程讲师。
+      <br/>
+      公众号：<strong>AI布道师沈飞</strong>
+    </Fragment>
+  </Content>
+</Layout>
