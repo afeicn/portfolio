@@ -22,6 +22,9 @@ const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroInteg
   hasExternalScripts ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
 
 export default defineConfig({
+  site: 'https://afeicn.github.io',
+  base: '/portfolio',
+
   output: 'static',
 
   build: {
