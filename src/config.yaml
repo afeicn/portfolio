@@ -1,7 +1,7 @@
 site:
   name: 沈飞 | 数字化与AI转型专家
-  site: 'https://afeicn.github.io'
-  base: '/portfolio'
+  site: 'https://shenfei-portfolio.vercel.app'
+  base: '/'
   trailingSlash: false
 
   googleSiteVerificationId: null
